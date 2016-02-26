@@ -25,7 +25,7 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-
+let having = '';
   db.all(
 
 // WE NEED TO REWRITE THIS SQL QUERY!
