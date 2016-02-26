@@ -1,0 +1,32 @@
+{
+  "name": "node-stepper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jstiltner/node-stepper.git"
+  },
+  "author": "Jason Stiltner <jasonstiltner@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jstiltner/node-stepper/issues"
+  },
+  "homepage": "https://github.com/jstiltner/node-stepper#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "bower": "^1.7.7",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "moment": "^2.11.2",
+    "passwordless": "^1.1.0",
+    "sqlite3": "^3.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.1"
+  }
+}
