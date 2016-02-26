@@ -10,10 +10,10 @@ app.set('view engine', 'jade');
 
 
 app.get('/', (req, res) => {
-  res.send('/ route works, time to render the index.jade file here!');
+  res.render('index');
 });
 
-  app.listen(PORT, () => {
-    console.log(`App listening on port ${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`);
+});
 
