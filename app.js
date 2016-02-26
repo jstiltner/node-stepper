@@ -5,7 +5,7 @@ const path = require('path');
 var express = require('express');
 var app = express();
 const sqlite3 = require('sqlite3');
-
+const routes = require('./routes/index.routes');
 
 const PORT = process.env.PORT || 3000;
 const db = new sqlite3.Database('./db/stepper.sqlite');
@@ -13,6 +13,7 @@ const db = new sqlite3.Database('./db/stepper.sqlite');
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'www')));
 
+app.use(routes);
 
 app.get('/', (req, res) => {
   res.render('index');
