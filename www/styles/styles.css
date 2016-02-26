@@ -1,0 +1,12 @@
+body {
+
+  background: url('http://icdn4.digitaltrends.com/image/best-fitness-apps-update_-1920x1080.jpg');
+  background-color: rgba(160,160,160,.75);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
+body .card {
+  background-color: rgba(255,255,255,0.6);
+}

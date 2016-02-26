@@ -1,0 +1,22 @@
+{
+  "name": "node-stepper",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Jason Stiltner <jasonstiltner@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jstiltner/node-stepper",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "Materialize": "materialize#^0.97.5"
+  }
+}
