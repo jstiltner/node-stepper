@@ -4,7 +4,7 @@
 const path = require('path');
 var express = require('express');
 const router = express.Router();
-const userInfo = require('../controllers/login.controller');
+const login = require('../controllers/login.controller');
 
 
 router.get('/login', login.get);
