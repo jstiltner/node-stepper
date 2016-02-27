@@ -6,6 +6,6 @@ var express = require('express');
 const router = express.Router();
 const userInfo = require('../controllers/userInfo.controller');
 
-router.get('/userInfo', userInfo.get);
-
+router.get('/userInfo/:username', userInfo.get);
+router.get('/userInfo/', userInfo.get);
 module.exports = router;

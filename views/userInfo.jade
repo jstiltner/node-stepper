@@ -7,10 +7,10 @@ html
     include ./includes/navBar.jade
 
     #main.card
-      h1 Join the fun
-      p So far our users have take #{allSteps} steps!
-      p The most steps walked in a day were #{stepRecord.stepRecord} by #{stepRecord.username}
-      p Our most active user is #{topUser.username} with #{topUser.totalSteps} steps!
+      h1 Keep it up!
+      p So far you have taken #{allSteps.total} steps, at an average of #{allSteps.dailyAverage} per day.
+      p The most steps you walked in a day were #{stepRecord.stepRecord}.
+
 
 
     include ./includes/scripts.jade

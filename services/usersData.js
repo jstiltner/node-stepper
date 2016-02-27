@@ -29,7 +29,7 @@ module.exports = function(req, res) {
           if (err) throw err;
           const topUser = data[0];
 
-        res.render('userInfo',{
+        res.render('usersInfo',{
           allSteps: allSteps,
           stepRecord: stepRecord,
           topUser: topUser
