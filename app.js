@@ -20,32 +20,28 @@ app.get('/', (req, res) => {
 });
 
 
-app.get('/login', (req, res) => {
-  res.render('login');
-});
+// app.get('/data', (req, res) => {
+// let having = '';
+//   db.all(
 
-app.get('/data', (req, res) => {
-let having = '';
-  db.all(
+// // WE NEED TO REWRITE THIS SQL QUERY!
 
-// WE NEED TO REWRITE THIS SQL QUERY!
+//     `SELECT count(*) as invoices,
+//            sum(Total) as total,
+//            strftime('%Y', InvoiceDate) as year
+//     FROM   Invoice
+//     GROUP BY year
+//     ${having}`,
+//       (err, data) => {
+//         if (err) throw err;
 
-    `SELECT count(*) as invoices,
-           sum(Total) as total,
-           strftime('%Y', InvoiceDate) as year
-    FROM   Invoice
-    GROUP BY year
-    ${having}`,
-      (err, data) => {
-        if (err) throw err;
-
-        res.send({
-          data: data,
-          info: 'ipsum lorem'
-        });
-      }
-    );
-});
+//         res.send({
+//           data: data,
+//           info: 'ipsum lorem'
+//         });
+//       }
+//     );
+// });
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);

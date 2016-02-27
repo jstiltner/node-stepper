@@ -6,7 +6,11 @@ html
   body
     include ./includes/navBar.jade
 
-    .card
-      h1 Will be the User Info page
+    #main.card
+      h1 Join the fun
+      p So far our users have take #{allSteps} steps!
+      p The most steps walked in a day were #{stepRecord.stepRecord} by #{stepRecord.username}
+      p Our most active user is #{topUser.username} with #{topUser.totalSteps} steps!
+
 
     include ./includes/scripts.jade
