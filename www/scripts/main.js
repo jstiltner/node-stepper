@@ -1,66 +1,23 @@
 console.log('hello')
 
-var lineData = [
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 11000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 14000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 16000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 11000, username: 'AJPCodes' },
-  { dailySteps: 11000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 17000, username: 'AJPCodes' },
-  { dailySteps: 14000, username: 'AJPCodes' },
-  { dailySteps: 16000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 14000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 11000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 10000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 8000, username: 'AJPCodes' },
-  { dailySteps: 9000, username: 'AJPCodes' },
-  { dailySteps: 10000, username: 'AJPCodes' },
-  { dailySteps: 13000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 11000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 12000, username: 'AJPCodes' },
-  { dailySteps: 1500, username: 'AJPCodes' },
-  { dailySteps: 1500, username: 'AJPCodes' },
-  { dailySteps: 2000, username: 'AJPCodes' },
-  { dailySteps: 15000, username: 'AJPCodes' },
-  { dailySteps: 10000, username: 'AJPCodes' },
-  { dailySteps: 20000, username: 'AJPCodes' } ];
+var lineData = {};
+var routeParams = window.location.pathname.split("/");
+var username = (routeParams[routeParams.length-1]);
+
+if (username.toLowerCase() === 'userinfo') {
+  username = "";
+}
+
+$.get( "/api/" + username, function( data ) {
+  lineData = data.dailySteps;
+  initChart(lineData);
+});
 
 function initChart(data) {
   //on resize, remove old chart
   d3.select("svg").remove();
   //insert new chart
-  var canvas = d3.select("body").append("svg");
+  var canvas = d3.select("#main.card").append("svg");
   canvas.attr('id', 'visualisation');
 
   var vis = d3.select('#visualisation'),
@@ -78,7 +35,7 @@ function initChart(data) {
         return index;
       })]),
       yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function(d) {
-        return d.dailySteps;
+        return 0;
       }), d3.max(lineData, function(d) {
         return d.dailySteps;
       })]),
@@ -118,8 +75,6 @@ function initChart(data) {
     .attr('fill', 'none');
 
 }
-
-initChart(lineData);
 
 $( window ).resize(function() {
   initChart(lineData);

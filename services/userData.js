@@ -3,7 +3,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./db/stepper.sqlite');
 
-module.exports = function(req, res, username) {
+module.exports = function(req, res, username, isAPICall) {
 
   db.all(`
     SELECT  SUM(steps) AS total, AVG(steps) as dailyAverage FROM Inputs
@@ -36,12 +36,19 @@ module.exports = function(req, res, username) {
           console.log(dailySteps);
 
 
-
+          if (isAPICall) {
+            res.send({
+            allSteps: allSteps,
+            stepRecord: stepRecord,
+            dailySteps: dailySteps
+          });
+          } else {
           res.render('userInfo',{
             allSteps: allSteps,
             stepRecord: stepRecord,
             dailySteps: dailySteps
-        });
+          });
+        }
       })
     })
   })
