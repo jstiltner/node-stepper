@@ -3,7 +3,7 @@
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('./db/stepper.sqlite');
 
-module.exports = function(req, res) {
+module.exports = function(req, res, isAPICall) {
 
   db.all(`
     SELECT  SUM(steps) AS allSteps FROM Inputs
@@ -29,11 +29,19 @@ module.exports = function(req, res) {
           if (err) throw err;
           const topUser = data[0];
 
+        if (isAPICall) {
+          res.send({
+          allSteps: allSteps,
+          stepRecord: stepRecord,
+          topUser: topUser
+        });
+        } else {
         res.render('usersInfo',{
           allSteps: allSteps,
           stepRecord: stepRecord,
           topUser: topUser
         });
+        }
       })
     })
   })
