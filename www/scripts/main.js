@@ -2,16 +2,15 @@ console.log('hello')
 
 var lineData = {};
 var routeParams = window.location.pathname.split("/");
+
+
+if (routeParams[routeParams.length-2].toLowerCase() === 'userinfo') {
 var username = (routeParams[routeParams.length-1]);
-
-if (username.toLowerCase() === 'userinfo') {
-  username = "";
+    $.get( "/api/" + username, function( data ) {
+    lineData = data.dailySteps;
+    initChart(lineData);
+  });
 }
-
-$.get( "/api/" + username, function( data ) {
-  lineData = data.dailySteps;
-  initChart(lineData);
-});
 
 function initChart(data) {
   //on resize, remove old chart
