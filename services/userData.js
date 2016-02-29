@@ -24,11 +24,25 @@ module.exports = function(req, res, username) {
         if (err) throw err;
         const stepRecord = data[0];
 
-        res.render('userInfo',{
-          allSteps: allSteps,
-          stepRecord: stepRecord
-      });
+      db.all(`
+        SELECT steps AS dailySteps, username FROM INPUTS
+          JOIN USERS ON inputs.userid = users.userid
+          WHERE users.username = "${username}" COLLATE NOCASE
+          ORDER BY inputDate
+        `,(err,data)=>{
+          if (err) throw err;
+          const dailySteps = data;
 
+          console.log(dailySteps);
+
+
+
+          res.render('userInfo',{
+            allSteps: allSteps,
+            stepRecord: stepRecord,
+            dailySteps: dailySteps
+        });
+      })
     })
   })
 };
