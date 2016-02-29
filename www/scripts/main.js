@@ -12,6 +12,12 @@ var username = (routeParams[routeParams.length-1]);
   });
 }
 
+$( window ).resize(function() {
+  if (routeParams[routeParams.length-2].toLowerCase() === 'userinfo') {
+    initChart(lineData);
+  }
+});
+
 function initChart(data) {
   //on resize, remove old chart
   d3.select("svg").remove();
@@ -75,6 +81,3 @@ function initChart(data) {
 
 }
 
-$( window ).resize(function() {
-  initChart(lineData);
-});
